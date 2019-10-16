@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+zuul:
+  routes:
+    auth-service:
+      path: /auth/**
+      url: http://localhost:10001
+      strip-prefix: true
+    flash-service:
+      path: /flash-cards/**
+      url: http://localhost:10002
+      strip-prefix: true
